@@ -1,0 +1,7 @@
+// ownfield
+*for exclude fields
+propertyName = excludeFields --> excludeFields: [username, email]
+*for filter
+just add them into params, it will work fine.
+* Sort
+sort = sort --> sort: [["created_at", "DESC"], ["more", "ASEC"]]
