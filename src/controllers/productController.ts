@@ -8,6 +8,7 @@ import catchAsync from "../utils/catchAsync";
 
 const createCategory = catchAsync(async (req: Request, res: Response, next: NextFunction) => {
     const {user_id, name} = req.body;
+    console.log(req.path);
 
     //get operation permission
     const serviceType = "create_category";
