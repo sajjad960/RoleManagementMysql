@@ -2,7 +2,7 @@ import { NextFunction, Request, Response } from "express";
 import Users from "../models/userModel";
 import factory from "./handleFactory";
 import catchAsync from "../utils/catchAsync";
-import UsersRoles from "../models/usersRolesModel";
+import UsersRoles from "../models/userHasRoleModel";
 import AppError from "../utils/AppError";
 
 const createUser = factory.createOne(Users);

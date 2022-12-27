@@ -1,18 +1,18 @@
 import { NextFunction, Request, Response } from "express";
 import Categories from "../models/categoryModel";
-import Permissions from "../models/permissionModel";
+import Permissions from "../models/actionHasPermissionModel";
 import Products from "../models/productModel";
-import UsersRoles from "../models/usersRolesModel";
+import UsersRoles from "../models/userHasRoleModel";
 import AppError from "../utils/AppError";
 import catchAsync from "../utils/catchAsync";
 
 const createCategory = catchAsync(async (req: Request, res: Response, next: NextFunction) => {
     const {user_id, name} = req.body;
-    console.log(req.path);
+    console.log(req.path, req.method); 
 
     //get operation permission
     const serviceType = "create_category";
-    const operationPermission = await Permissions.findOne({where: {operation_name: serviceType}})
+    const operationPermission = await Permissions.findOne({where: {action_name: serviceType}})
     
     // get user permission depends on operation permission role
     const userRolesPermission = await UsersRoles.findAll({where: {user_id, role_id: operationPermission?.role_id}});

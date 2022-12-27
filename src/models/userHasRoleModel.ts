@@ -2,7 +2,7 @@ const Sequelize = require("sequelize");
 import { DataTypes } from "sequelize";
 import { sequelize } from "../instances/sequelize";
 
-const UsersRoles = sequelize.define('users_roles', {
+const UsersRoles = sequelize.define('user_has_roles', {
     id: {
       autoIncrement: true,
       type: DataTypes.INTEGER,

@@ -2,7 +2,7 @@ const Sequelize = require("sequelize");
 import { DataTypes } from "sequelize";
 import { sequelize } from "../instances/sequelize";
 
-const Permissions = sequelize.define('permissions', {
+const Permissions = sequelize.define('action_has_permissions', {
     id: {
       autoIncrement: true,
       type: DataTypes.INTEGER,
