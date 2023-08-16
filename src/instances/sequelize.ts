@@ -14,4 +14,6 @@ export const sequelize = new Sequelize(db, username, password, {
 sequelize
   .authenticate()
   .then(() => console.log("database connected successfully"))
-  .catch((err: Error) => console.log("something went rong with database connection"));
+  .catch((err: Error) => {console.log("something went rong with database connection")
+  console.log(err)
+});
