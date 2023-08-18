@@ -20,7 +20,7 @@ const Permissions = sequelize.define('action_has_permissions', {
     }
   }, {
     sequelize,
-    tableName: 'permissions',
+    tableName: 'action_has_permissions',
     timestamps: false,
     indexes: [
       {

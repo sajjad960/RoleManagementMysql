@@ -12,7 +12,7 @@ const createCategory = catchAsync(async (req: Request, res: Response, next: Next
 
     //get operation permission
     const serviceType = "create_category";
-    const operationPermission = await Permissions.findOne({where: {action_name: serviceType}})
+    const operationPermission = await Permissions.findOne({where: {operation_name: serviceType}})
     
     // get user permission depends on operation permission role
     const userRolesPermission = await UsersRoles.findAll({where: {user_id, role_id: operationPermission?.role_id}});
