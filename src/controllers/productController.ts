@@ -7,19 +7,6 @@ import AppError from "../utils/AppError";
 import catchAsync from "../utils/catchAsync";
 
 const createCategory = catchAsync(async (req: Request, res: Response, next: NextFunction) => {
-    const {user_id, name} = req.body;
-    console.log(req.path, req.method); 
-
-    //get operation permission
-    const serviceType = "create_category";
-    const operationPermission = await Permissions.findOne({where: {operation_name: serviceType}})
-    
-    // get user permission depends on operation permission role
-    const userRolesPermission = await UsersRoles.findAll({where: {user_id, role_id: operationPermission?.role_id}});
-
-    if(userRolesPermission?.length < 1) {
-      return next(new AppError("Bad Request", 400))
-    }
 
     const doc: object = await Categories.create(req.body);
 
@@ -33,18 +20,6 @@ const createCategory = catchAsync(async (req: Request, res: Response, next: Next
   });
 
 const createProduct = catchAsync(async (req: Request, res: Response, next: NextFunction) => {
-    const {user_id, name} = req.body;
-
-    //get operation permission
-    const serviceType = "create_product";
-    const operationPermission = await Permissions.findOne({where: {operation_name: serviceType}})
-    
-    // get user permission depends on operation permission role
-    const userRolesPermission = await UsersRoles.findAll({where: {user_id, role_id: operationPermission?.role_id}});
-
-    if(userRolesPermission?.length < 1) {
-      return next(new AppError("Bad Request", 400))
-    }
     
     const doc: object = await Products.create(req.body);
 
